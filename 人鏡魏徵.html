@@ -1,0 +1,676 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>人鏡魏徵</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&family=Noto+Serif+TC:wght@400;600;700&display=swap">
+<style>
+/* 版式：單欄奏摺。上為朝局（日期＋五項屬性），中為事件，下為四片「笏板」選項。 */
+:root{
+  --bg:#e4ebe5; --paper:#f4f7f2; --ink:#1c2827; --muted:#566763; --line:#c5d2ca;
+  --accent:#2c6b65; --seal:#a5302a; --gold:#8f7128; --good:#2f7a45; --bad:#a5302a;
+  --display:"LXGW WenKai TC","Kaiti TC","STKaiti","KaiTi",serif;
+  --body:"Noto Serif TC","Songti TC","PMingLiU",serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1c21; --paper:#15272d; --ink:#ebe6d6; --muted:#91a4a1; --line:#2a4047;
+  --accent:#72b5a8; --seal:#d6584c; --gold:#d9b660; --good:#7cc58f; --bad:#e2766a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1c21; --paper:#15272d; --ink:#ebe6d6; --muted:#91a4a1; --line:#2a4047;
+  --accent:#72b5a8; --seal:#d6584c; --gold:#d9b660; --good:#7cc58f; --bad:#e2766a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+.wrap{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+header{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h1{font-family:var(--display);font-size:2.4rem;line-height:1;margin:0;letter-spacing:.08em;text-wrap:balance}
+h1 small{display:block;font-size:.9rem;letter-spacing:.3em;color:var(--muted);margin-top:8px;font-family:var(--body)}
+.seal{display:inline-grid;place-items:center;width:2.4rem;height:2.4rem;border:2px solid var(--seal);color:var(--seal);
+  font-family:var(--display);font-weight:700;border-radius:4px;flex:none;line-height:1}
+.date{font-family:var(--display);font-size:1.15rem;color:var(--accent);text-align:right}
+.date span{display:block;font-family:var(--body);font-size:.8rem;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.st{display:flex;flex-direction:column;gap:4px;min-width:0}
+.st b{font-family:var(--display);font-weight:400;font-size:.9rem;color:var(--muted)}
+.st i{font-style:normal;font-variant-numeric:tabular-nums;font-size:1.05rem}
+.bar{height:4px;background:var(--line);border-radius:2px;overflow:hidden}
+.bar div{height:100%;background:var(--accent);transition:width .5s}
+.st.warn .bar div{background:var(--seal)} .st.warn i{color:var(--seal)}
+.d{font-size:.75rem;font-variant-numeric:tabular-nums}.d.p{color:var(--good)}.d.n{color:var(--bad)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:20px 18px;display:flex;flex-direction:column;gap:12px}
+.place{font-size:.78rem;letter-spacing:.2em;color:var(--gold)}
+h2{font-family:var(--display);font-size:1.6rem;margin:0;line-height:1.3;text-wrap:balance}
+.txt p{margin:0 0 .7em}
+canvas{width:100%;max-width:100%;aspect-ratio:16/10;border-radius:4px;background:#1a0d10;display:block}
+.opts{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:560px){.opts{grid-template-columns:1fr 1fr}}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;font:inherit;color:var(--ink);background:var(--bg);
+  border:1px solid var(--line);border-radius:22px 22px 6px 6px;padding:14px 14px 16px;cursor:pointer;min-height:76px;transition:border-color .15s,transform .15s}
+.opt:hover{border-color:var(--accent);transform:translateY(-2px)}
+.opt:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opt .seal{width:1.9rem;height:1.9rem;font-size:1rem}
+.opt span{min-width:0}
+.res{border-left:3px solid var(--seal);padding-left:12px}
+.res .fx{font-size:.85rem;color:var(--muted);margin-top:6px}
+.btn{font:inherit;font-family:var(--display);font-size:1.1rem;background:var(--accent);color:var(--paper);border:0;border-radius:4px;padding:10px 22px;cursor:pointer;align-self:flex-start}
+.ghost{font:inherit;font-size:.85rem;background:none;border:1px solid var(--line);color:var(--muted);border-radius:4px;padding:6px 12px;cursor:pointer}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+details{border-top:1px solid var(--line);padding-top:10px}
+summary{cursor:pointer;font-family:var(--display);color:var(--muted)}
+.log{font-size:.88rem;color:var(--muted);max-height:320px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.log div{min-width:0}
+.end h2{color:var(--seal)}
+.epi{font-family:var(--display);font-size:1.2rem;text-align:center;padding:14px;border:1px double var(--gold);color:var(--gold)}
+.tbl{width:100%;border-collapse:collapse;font-size:.9rem;font-variant-numeric:tabular-nums}
+.tbl td{padding:4px 6px;border-bottom:1px solid var(--line)}
+.intro p{margin:0 0 .6em}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>魏　徵<small>以人為鏡　可以明得失</small></h1>
+    <div class="date" id="date"></div>
+  </header>
+  <div class="stats" id="stats"></div>
+  <main id="main"></main>
+  <div class="tools">
+    <button class="ghost" id="restart">重新開局</button>
+  </div>
+  <details>
+    <summary>起居注（歷程紀錄）</summary>
+    <div class="log" id="log"></div>
+  </details>
+</div>
+
+<script>
+/* ============ 基本資料 ============ */
+const STAT=[['f','聖眷'],['r','清名'],['h','體力'],['s','國勢'],['x','猜忌']];
+const SEAL=['甲','乙','丙','丁'];
+const KEY='weizheng-save-v1';
+let S=null, cur=null, phase='event', lastDelta={};
+const $=id=>document.getElementById(id);
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const clamp=v=>Math.max(0,Math.min(100,v));
+const CN='〇一二三四五六七八九';
+function cn(n){if(n===1)return'元';if(n<10)return CN[n];if(n<20)return'十'+(n%10?CN[n%10]:'');return CN[Math.floor(n/10)]+'十'+(n%10?CN[n%10]:'')}
+const MON=['正','二','三','四','五','六','七','八','九','十','十一','十二'];
+function era(y){
+  if(y<=649)return['貞觀',y-626];
+  if(S.heir==='承乾')return['承平',y-649];
+  if(S.heir==='泰')return['文興',y-649];
+  if(y<=655)return['永徽',y-649];if(y<=660)return['顯慶',y-655];if(y<=663)return['龍朔',y-660];
+  if(y<=665)return['麟德',y-663];if(y<=667)return['乾封',y-665];if(y<=669)return['總章',y-667];
+  if(y<=673)return['咸亨',y-669];return['上元',y-673];
+}
+const emp=()=>S.emp;
+const season=m=>['春','春','春','夏','夏','夏','秋','秋','秋','冬','冬','冬'][m-1];
+
+function newGame(){
+  return {y:637,m:3,w:1,age:57,turn:0,f:68,r:72,h:72,s:70,x:12,
+    flags:{},cnt:{reform:0,pc:0,pt:0,pz:0},done:{},cool:{},log:[],alive:true,
+    emp:'太宗',heir:null,wu:'palace',death:null};
+}
+
+/* ============ 劇本事件（依時間觸發） ============ */
+const SCRIPT=[
+{id:'feishan',y:637,m:3,place:'貞觀十一年・洛陽',title:'飛山宮之議',
+ text:`陛下在位日久，天下承平。近日下詔於洛陽營建飛山宮，役夫數萬。朝中諸公多不敢言，你看著工部呈上的圖樣，想起隋煬帝當年也是從營宮室開始，一步步耗盡民力。`,
+ opts:[
+ {t:'閉門三日，草就《諫太宗十思疏》：居安思危，戒奢以儉',e:{r:8,f:3,s:3},o:'疏入，陛下手詔褒答，稱「公之所諫，朕聞過矣」，並將奏疏置於案頭。飛山宮的工程縮減了大半。',set:{shisi:1}},
+ {t:'當廷力諫，直言此舉與隋煬帝無異',e:{r:6,f:-8,s:2},o:'殿上一片寂靜。陛下拂袖退朝，回宮後怒道「會須殺此田舍翁」。所幸皇后遺風猶在，此事最終不了了之，工程暫停。'},
+ {t:'私下面見陛下，以隋亡舊事委婉諷喻',e:{r:3,f:3,s:2},o:'陛下聽罷沉吟許久，說「朕知矣」。工程未停，但役夫減半。'},
+ {t:'年事已高，此事暫且不言',e:{r:-8,f:2},o:'宮室照建。同僚私下議論：魏公也老了。'}]},
+{id:'lanling',y:637,m:6,place:'承慶殿',title:'忌日之舞',
+ text:`文德皇后忌日大祭。新選入宮的才人武如意，年方十四，在殿上一曲《蘭陵王入陣曲》舞姿凌厲，艷壓群芳。陛下看得出神，散祭後仍向左右問起此女。`,
+ opts:[
+ {t:'上言忌日大祭不宜歌舞，請陛下以哀思為重',e:{r:4,f:-3},o:'陛下面有慚色，下令此後忌日停樂。武才人遠遠向你行了一禮，眼神看不出喜怒。'},
+ {t:'稱此女舞中有兵陣之氣，才華難得',e:{f:3,r:-1},o:'陛下大悅，賜武才人錦帛。後宮之中，已有人開始記恨她。',set:{wuAlly:1}},
+ {t:'默記此女姓名，暗中留意',e:{},o:'你吩咐家僕打聽：荊州都督武士彠之女，喪父後家道中落。一個身世飄零卻敢在御前舞兵陣的女子。',set:{watchWu:1}},
+ {t:'不置一詞，後宮之事非外臣所宜過問',e:{f:1},o:'你早早告退回府。'}]},
+{id:'zheng',y:637,m:7,cond:S=>S.wu==='palace',place:'掖庭',title:'鄭才人之死',
+ text:`大祭當夜，才人鄭婉言暴斃宮中。所有證據都指向武如意，內侍省已對她動了大刑。風聲傳到外朝，有人說這是後宮爭寵，有人說這是有人借刀殺人。`,
+ opts:[
+ {t:'上奏：宮中命案也應交大理寺依律勘問，不可濫刑',e:{r:6,f:-2},o:'陛下准奏。酷刑停止，但罪證難翻，武如意仍被發配掖庭服役一年。她托人帶來一句話：「魏公之恩，媚娘不忘。」',set:{wuDebt:1}},
+ {t:'暗中遣人查訪當夜值守的宮人',ch:{p:S=>S.flags.watchWu?0.7:0.4,
+   ok:{e:{r:4,x:3},o:'查出鄭才人所服湯藥曾經他人之手。證據雖不足以翻案，卻足以讓武如意免死。她被發配掖庭，而你在後宮也多了幾雙敵視的眼睛。',set:{wuDebt:1}},
+   no:{e:{x:8},o:'線人被發現，有人在陛下面前說你「交結內廷」。查訪無果。'}}},
+ {t:'後宮之事，外臣不宜干預',e:{r:-2},o:'武如意受盡刑罰，被打入掖庭。'},
+ {t:'奏請速決此案，以安後宮人心',e:{f:2,r:-5},o:'案子很快結了。武如意發配掖庭，許多人鬆了一口氣。',set:{wuEnemy:1}}]},
+{id:'princes',y:637,m:10,place:'宮中校場',title:'三子較藝',
+ text:`陛下在校場觀太子承乾、魏王李泰、晉王李治比試武藝。承乾腳疾未癒卻強撐上馬，李泰體胖而口才便給，李治年少溫厚。比試之後，陛下忽然轉頭問你：「玄成以為，朕諸子之中誰最肖朕？」`,
+ opts:[
+ {t:'太子為國本，臣只見太子',e:{f:-1,r:3},o:'陛下笑而不語。承乾聽說後，第一次派人到你府上送禮。',add:{pc:2}},
+ {t:'魏王好學，文采最類陛下',e:{f:3,r:-2},o:'陛下顯然很受用。魏王府的門客開始頻繁拜訪你。',add:{pt:2}},
+ {t:'晉王仁孝，最得文德皇后之風',e:{f:1},o:'陛下目光柔和下來，提起了皇后。李治向你遠遠一揖。',add:{pz:2}},
+ {t:'諫言：陛下不宜使諸子相競，嫡庶之分當早明',e:{r:6,f:-3},o:'陛下神色一凜，久久才說「卿言是也」。只是此後魏王的恩寵並未減少。',set:{warnRival:1}}]},
+{id:'chaohui',y:638,m:1,place:'太極殿',title:'大朝會',
+ text:`三年一度的大朝會，萬國使節來朝天可汗。各國使者以琴棋武藝挑釁大唐，連下數城，殿上君臣臉上都掛不住。此時一名剛從掖庭放出的女官越眾而出，請求應戰。正是武如意。`,
+ opts:[
+ {t:'出面為她作保，請陛下准她一試',e:{f:2,x:2},o:'她連破數陣，為大唐挽回顏面。陛下大喜，賜名「媚娘」。退朝時她低聲說：「又欠魏公一次。」',set:{wuDebt:1,wuAlly:1}},
+ {t:'以國體為重，請陛下勿令宮人出面',e:{r:2,f:-2},o:'陛下沉吟片刻，還是准了她。她大獲全勝，賜名媚娘。你在殿上顯得有些多餘。'},
+ {t:'自請出陣，以經史辯難折服使節',ch:{p:S=>S.r/120,ok:{e:{r:6,f:4},o:'你以《左傳》辭令連駁三國使節，滿殿喝采。武媚娘的光彩被你分去一半。'},no:{e:{r:-3,h:-4},o:'使節以胡語刁難，你應答遲滯。最後仍是武如意出面扭轉局勢，陛下賜名媚娘。'}}},
+ {t:'靜觀其變',e:{},o:'武如意大勝，陛下賜名「媚娘」，一時成為後宮眾矢之的。'}]},
+{id:'shizi',y:638,m:4,place:'御苑',title:'馴獅子驄',
+ text:`陛下有烈馬獅子驄，無人能馴。武媚娘自請：「給妾鐵鞭、鐵錘、匕首三物。鞭之不服則錘其首，再不服則以匕首斷其喉。」陛下大笑稱其壯志。你卻聽得心頭一寒。`,
+ opts:[
+ {t:'事後密奏：此女心性狠決，不宜久留宮中',e:{f:1,x:2},o:'陛下不以為然：「婦人家逞口舌罷了。」此話不知如何傳到了媚娘耳中。',set:{wuEnemy:1},fn:S=>{delete S.flags.wuAlly}},
+ {t:'讚其果決，有大丈夫氣',e:{f:2,r:-2},o:'陛下點頭。媚娘望向你的眼神多了幾分親近。',set:{wuAlly:1}},
+ {t:'借題發揮，勸陛下馭人當以仁德，不可以威',e:{r:5,f:1},o:'陛下由馬及人，談起了玄武門舊事，良久無言。'},
+ {t:'一笑置之',e:{},o:'御苑中笑語不絕。'}]},
+{id:'tubo',y:638,m:8,place:'劍南道',title:'吐蕃寇松州',
+ text:`吐蕃贊普松贊干布求娶公主不成，發兵二十萬進逼松州，聲言「若不許婚，當親提兵入寇」。朝議沸騰，陛下召宰執廷議。`,
+ opts:[
+ {t:'先遣侯君集、牛進達擊之，挫其鋒而後許婚',e:{s:6,f:3},o:'牛進達夜襲松州城下，斬首千餘。吐蕃謝罪退兵，再遣使求婚，陛下許之。',set:{tuboWin:1}},
+ {t:'即刻許婚，免動干戈',e:{s:-4,r:-2},o:'吐蕃得婚而益驕，邊境小釁不斷。'},
+ {t:'舉兵深入，一舉蕩平',e:{s:-3,h:-2},o:'大軍深入高原，士卒多病。雖然勝了幾仗，國庫為之一空。'},
+ {t:'閉關自守，修築城寨',e:{s:-2},o:'吐蕃劫掠而去。'}]},
+{id:'chengxin',y:639,m:2,place:'東宮',title:'太子與稱心',
+ text:`有消息傳來：太子承乾在東宮仿突厥人搭帳篷、烹羊肉，又寵愛一名叫「稱心」的樂童，日夜不朝。太子的老師們上疏規勸，反遭太子遣人刺殺未遂。`,
+ opts:[
+ {t:'親赴東宮，以玄武門舊事點醒太子',e:{r:4,h:-3},o:'承乾起初傲慢，聽到最後卻紅了眼眶：「父皇眼中只有青雀（魏王）。」你知道他心裡的病不在稱心。',add:{reform:2,pc:1}},
+ {t:'據實奏聞陛下',e:{f:2,x:2},o:'陛下大怒，處死稱心。承乾恨極，在東宮為稱心立像，日夜祭哭。',set:{chengxinDead:1},add:{reform:-1}},
+ {t:'舉薦端方之士入東宮輔導',e:{r:2},o:'新任東宮官屬盡心規諫，太子收斂了些許。',add:{reform:1}},
+ {t:'東宮之事，自有東宮官屬',e:{},o:'太子愈發荒誕。'}]},
+{id:'shijian',y:639,m:5,place:'中書省',title:'十漸不克終',
+ text:`陛下近年漸好遊獵，營建不止，對直言者的耐心也大不如前。你翻出貞觀初年的舊疏，發現陛下當年說過的話，如今幾乎一條條都反過來了。`,
+ opts:[
+ {t:'上《十漸不克終疏》，列舉十件今不如昔之事',e:{r:9,f:-2,s:3},o:'陛下讀罷，將奏疏書於屏風，朝夕觀覽，並賜你黃金十斤、廄馬二匹。',set:{shijian:1}},
+ {t:'擇其要者，只諫遊獵一事',e:{r:3,f:1},o:'陛下減少了出獵的次數。'},
+ {t:'告病請辭，以退為諫',ch:{p:S=>S.f/100,ok:{e:{f:5,r:4,h:5},o:'陛下親筆挽留：「公獨不見金之在礦，何足貴哉？良冶鍛而為器，便為人所寶。朕方自比於金，以卿為良工。」'},no:{e:{f:-6,h:5},o:'陛下准了你的病假，三月不召。'}}},
+ {t:'人主不可逆，暫且隱忍',e:{r:-5,f:2},o:'屏風上空空如也。'}]},
+{id:'gaochang',y:640,m:9,place:'西州',title:'高昌既平',
+ text:`侯君集攻滅高昌，陛下欲以其地置西州，每年遣兵千人戍守。凱旋之後，又有人揭發侯君集私取高昌珍寶，下獄待審。`,
+ opts:[
+ {t:'諫勿置州：高昌懸遠，戍卒十年九死，不如立其子弟為王',e:{r:5,f:-2,s:2},o:'陛下不聽，仍設西州、安西都護府。多年後戍卒之苦傳回長安，人們才想起你的話。'},
+ {t:'為侯君集求情：大將有功，不宜以小過下獄',e:{f:1,x:3},o:'侯君集獲釋，親自登門道謝，說他日必報此恩。',set:{houFriend:1}},
+ {t:'主張依法嚴懲侯君集，以肅軍紀',e:{r:3,s:1},o:'侯君集雖被釋放，卻從此對你懷恨在心。',set:{houEnemy:1}},
+ {t:'兩事皆不置喙',e:{},o:'西州設立，侯君集獲釋。'}]},
+{id:'wencheng',y:641,m:1,place:'長安・開遠門',title:'文成公主入藏',
+ text:`宗室女文成公主奉詔遠嫁吐蕃，江夏王李道宗持節護送。陛下問你，此番和親，當以何物為陪嫁？`,
+ opts:[
+ {t:'以經史典籍、農桑醫書與工匠為嫁',e:{s:6,r:3},o:'公主帶著詩書與穀種入藏，吐蕃遣子弟入國學讀書。'},
+ {t:'以金帛珍寶彰顯大唐富庶',e:{s:1,f:2},o:'吐蕃使者讚嘆不已，國庫卻少了不少存銀。'},
+ {t:'以佛像經卷為嫁，以教化為先',e:{s:4},o:'公主攜釋迦像入藏，為邏些城建寺供奉。'},
+ {t:'請減省陪嫁，示以儉德',e:{r:2,s:-1},o:'陪嫁從簡。吐蕃使者面露不悅。'}]},
+{id:'fengshan',y:641,m:5,place:'洛陽宮',title:'封禪之議',
+ text:`群臣再請陛下封禪泰山。陛下已命禮官定儀，車駕將東行。你記得十年前曾以「戶口未復、倉廩尚虛」諫止此事。`,
+ opts:[
+ {t:'再諫：封禪勞民，不如以德服天下',e:{r:5,f:-3,s:3},o:'恰逢彗星見於太微，陛下下詔罷封禪。有人說是天象，也有人說是你。'},
+ {t:'附議封禪，以彰盛世',e:{f:4,r:-6,s:-3},o:'禮官忙了半年，最終因彗星見而罷。你的附議被史官記了一筆。'},
+ {t:'請先遣使巡察河南道民情再議',e:{r:2,s:2},o:'使者回報沿途饑荒未平，陛下自行罷議。'},
+ {t:'稱病不朝',e:{h:4,r:-2},o:'你在府中聽說封禪罷了。'}]},
+{id:'hengshan',y:642,m:3,place:'兩儀殿',title:'衡山公主',
+ text:`陛下召見，笑說要將衡山公主許配你的長子魏叔玉，結為兒女親家。滿殿同僚紛紛道賀。`,
+ opts:[
+ {t:'叩首謝恩',e:{f:6},o:'婚期定於明年。你府上一時門庭若市。',set:{hengshan:1}},
+ {t:'婉辭：臣家寒素，不敢高攀天家',e:{r:4,f:-1},o:'陛下嘆道：「卿之清儉，朕所深知。」婚事作罷。'},
+ {t:'謝恩，但請婚禮從簡',e:{f:4,r:2},o:'陛下大笑稱好。',set:{hengshan:1}},
+ {t:'請陛下將恩典轉賜有功將士之家',e:{r:5,f:-2},o:'陛下不悅，此事擱置。'}]},
+{id:'taishi',y:642,m:9,place:'兩儀殿',title:'太子太師',
+ text:`魏王李泰聲勢日盛，朝中盛傳太子將廢。陛下下詔，命你兼任太子太師，用意再明白不過：以你的清望為東宮壓陣。此時你已六十二歲，腳疾時發。`,
+ opts:[
+ {t:'受命，入東宮嚴加督導太子',e:{r:3,h:-5},o:'你每五日入東宮一次，承乾見你便收斂。宮中傳言：東宮有魏公，國本可安。',add:{reform:2,pc:2},set:{taishi:1}},
+ {t:'受命，並奏請陛下抑損魏王恩禮',e:{r:5,f:-3,x:3},o:'陛下削減了魏王府的用度。魏王門下對你恨之入骨。',add:{reform:1,pc:2,pt:-3},set:{taishi:1}},
+ {t:'以疾固辭',e:{h:4,f:-3},o:'陛下手詔：「周幽、晉獻廢嫡立庶，危國亡家。卿雖臥病，可臥護之。」你終究還是接了詔書。',set:{taishi:1},add:{pc:1}},
+ {t:'受命，但暗中與魏王保持往來',e:{f:1,x:6},o:'兩邊都不得罪，兩邊也都不信你。',add:{pt:2},set:{taishi:1}}]},
+{id:'jian',y:642,m:10,place:'御書房',title:'宰相之才',
+ text:`陛下私下問你：朝中誰可以為宰相？你心中想到幾個人：中書侍郎杜正倫、吏部尚書侯君集文武兼備；黃門侍郎褚遂良、中書令馬周則穩重清正。`,
+ opts:[
+ {t:'密薦杜正倫、侯君集，稱其有宰相之才',e:{f:2},o:'陛下點頭記下。這次舉薦，日後將成為你最大的隱患。',set:{recHou:1}},
+ {t:'薦褚遂良、馬周',e:{r:3,s:2},o:'陛下深以為然。'},
+ {t:'答：宰相當由陛下聖裁，臣不敢私薦',e:{r:2},o:'陛下笑道：「玄成謹慎了。」'},
+ {t:'直言：侯君集志大而智小，不可大用',e:{r:3,x:2},o:'陛下沉默不語。這話傳了出去，侯君集更恨你了。',set:{houEnemy:1}}]},
+{id:'copies',y:642,m:11,place:'魏府書齋',title:'諫書副本',
+ text:`起居郎褚遂良到訪，說要修起居注，想看看你歷年諫書的底稿。你的書箱裡確實留著每一封諫疏的副本，十餘年來從未示人。`,
+ opts:[
+ {t:'取出副本，任其抄錄',e:{r:4},o:'褚遂良如獲至寶。你沒有想到，「留稿示史官」這件事，日後會被人說成沽名釣譽。',set:{copies:1}},
+ {t:'當場焚毀底稿',e:{r:-1,x:-3},o:'灰燼飄滿了書房。許多話從此只有陛下與你知道。'},
+ {t:'將副本封存，呈陛下親覽',e:{f:4,x:-2},o:'陛下讀了一夜，次日說：「朕今日方知卿用心之苦。」'},
+ {t:'婉拒：諫書出於君臣私議，不宜示人',e:{r:1},o:'褚遂良悻悻而去。'}]},
+{id:'illness',y:642,m:12,place:'魏府',title:'風疾',
+ text:`入冬之後你一病不起，頭暈目眩，手足麻木。陛下遣中使探視，往來道路相望。聽說你家沒有正堂，陛下下令停建自己的小殿，把木料拆來為你營建大屋。`,
+ opts:[
+ {t:'安心臥床靜養，謝絕一切公務',e:{h:14,s:-2,f:1},o:'病勢稍緩。大屋落成時，你已能扶杖行走。'},
+ {t:'力辭大屋，抱病上朝',e:{r:6,h:-8},o:'陛下又是感動又是無奈。你咳著血走完了宮道。'},
+ {t:'延請名醫，用猛藥一搏',ch:{p:()=>0.5,ok:{e:{h:22},o:'虎狼之藥竟見奇效，你又能提筆寫奏疏了。'},no:{e:{h:-12},o:'藥性太烈，病情反而加重。'}}},
+ {t:'上遺表，交代身後之事',e:{r:4,h:4},o:'你在遺表中寫下「天下之事，有善有惡。任善人則國安，用惡人則國亂」。陛下讀罷淚下。',set:{yibiao:1}}]},
+{id:'nvzhu',y:643,m:1,cond:S=>S.emp==='太宗'&&S.wu==='palace',place:'太史局',title:'女主武王',
+ text:`太史令李淳風密奏：太白屢晝見，秘記云「唐中弱，有女主武王代有天下」。陛下疑心大起，竟動了盡誅後宮可疑之人的念頭。宮中姓武、名中帶武的人人自危，武媚娘首當其衝。`,
+ opts:[
+ {t:'力諫：天命不可以殺伐禳除，濫殺只會應讖',e:{r:6,f:-3},o:'李淳風也附和你：「王者不死，多殺何益？」陛下打消了念頭。媚娘逃過一劫。',set:{wuDebt:1}},
+ {t:'建議放出宮人，令其出家為尼',e:{r:2,f:2},o:'陛下准奏。一批宮人被送往感業寺，武媚娘也在其中。',fn:S=>{S.wu='temple'}},
+ {t:'附和清查，以絕後患',e:{f:3,r:-6},o:'一場血腥清查開始了。武媚娘因晉王李治暗中求情才倖免，從此視你為仇。',set:{wuEnemy:1}},
+ {t:'不置可否，靜觀其變',e:{},o:'李君羨因小名「五娘」被貶出京，最終以謀反罪伏誅。宮中暫時平靜了。'}]},
+{id:'lingyan',y:643,m:2,place:'凌煙閣',title:'凌煙閣圖功臣',
+ text:`陛下命閻立本繪二十四功臣像於凌煙閣，你名列第四，僅次於長孫無忌、李孝恭、杜如晦。畫師來府中為你寫真，問你想以什麼神情入畫。`,
+ opts:[
+ {t:'執笏直立，作正色進諫之態',e:{r:4},o:'畫成，陛下常獨自登閣，在你像前駐足。'},
+ {t:'作讀書之態',e:{r:2,h:2},o:'畫中的你手持書卷，神情閒適。'},
+ {t:'辭謝，自稱降臣，不敢與開國元勳並列',e:{r:3,f:-1},o:'陛下不許，畫照繪。'},
+ {t:'請畫師畫得和善些',e:{f:2},o:'陛下看了大笑：「人言魏徵舉動疏慢，我但覺嫵媚。」'}]},
+{id:'qiwang',y:643,m:3,place:'齊州',title:'齊王祐反',
+ text:`齊王李祐在齊州殺長史權萬紀，舉兵造反，短短數日即兵敗被擒。審訊中牽出一名叫紇干承基的人，此人竟是東宮的死士。`,
+ opts:[
+ {t:'奏請徹查紇干承基與東宮的關係',e:{f:2,x:2,s:2},o:'紇干承基在獄中供出了太子承乾的謀反計畫。',set:{exposeCQ:1}},
+ {t:'先密見太子，問明真相',ch:{p:S=>Math.min(0.85,S.cnt.reform*0.15+0.1),ok:{e:{r:4,h:-3},o:'承乾跪地痛哭，承認曾與侯君集、李元昌密謀，但說自己已打消念頭。你決定給他一次機會。',set:{cqConfess:1},add:{reform:2}},no:{e:{x:8},o:'承乾矢口否認，事後派人監視你的府邸。'}}},
+ {t:'請陛下寬宥李祐，以全骨肉',e:{r:2,f:-2},o:'陛下仍賜李祐自盡。'},
+ {t:'此事牽連太廣，不宜深究',e:{x:3},o:'但紇干承基為求活命，自己招了。',set:{exposeCQ:1}}]},
+{id:'coup',y:643,m:4,place:'太極宮',title:'東宮之變',
+ text:S=>`${S.flags.cqConfess&&!S.flags.exposeCQ?'承乾已在你面前認罪，但侯君集等人仍在暗中奔走，隨時可能動手。':'紇干承基供出太子承乾與侯君集、漢王李元昌謀逆。陛下震怒，召長孫無忌、房玄齡、李勣與你議儲。'}魏王李泰每日入侍，晉王李治則在一旁垂淚。這一步，將決定大唐未來數十年。`,
+ opts:[
+ {t:S=>S.flags.cqConfess&&!S.flags.exposeCQ?'連夜面聖，請陛下以父子之情化解，保全太子':'力保承乾：太子受人蠱惑，請廢黜而不加誅',
+  fn:S=>{if(S.flags.cqConfess&&!S.flags.exposeCQ&&S.cnt.reform>=5){S.heir='承乾';return{e:{r:8,f:4,s:4},o:'陛下與承乾父子相擁而泣。侯君集等人被秘密處置，承乾保住了東宮。你改變了歷史。'}}
+   S.heir='治';return{e:{r:4,f:-4},o:'承乾被廢為庶人，流放黔州，免於一死。長孫無忌力主晉王，陛下最終立李治為太子。'}}},
+ {t:'力主立晉王李治：仁孝之君可保諸子',e:{f:3,s:2},fn:S=>{S.heir='治'},o:'長孫無忌與你所見相同。陛下立李治為太子，李泰被幽禁。',add:{pz:3}},
+ {t:'支持魏王李泰：才學最類陛下',fn:S=>{if(S.cnt.pt>=3&&Math.random()<0.5){S.heir='泰';return{e:{f:4,x:4},o:'李泰在陛下面前許諾：「臣百年之後，當殺子傳位晉王。」陛下竟信了。李泰被立為太子。'}}
+  S.heir='治';return{e:{f:-4,x:8},o:'褚遂良當廷駁斥：魏王豈有殺子傳弟之理？陛下醒悟，立李治為太子。你被視為魏王黨。'}}},
+ {t:'不發一言，聽憑聖裁',e:{r:-4},fn:S=>{S.heir='治'},o:'陛下立晉王李治為太子。'}]},
+{id:'hou',y:643,m:5,cond:S=>S.flags.recHou&&S.heir!=='承乾',place:'刑部大獄',title:'侯君集伏誅',
+ text:`侯君集以謀反罪伏誅。行刑前有人提起：去年魏徵曾在陛下面前密薦侯君集「有宰相之才」。杜正倫也因洩漏宮中語被貶。陛下召你入宮，臉色陰沉。`,
+ opts:[
+ {t:'坦然認錯：臣知人不明，請陛下治罪',e:{f:-6,x:10,r:3},o:'陛下長嘆：「卿非有私，然朕心不能無疑。」'},
+ {t:'力辯：薦其才，不保其心，臣無私黨',e:{x:6,f:-3},o:'陛下不置可否。御史台開始翻查你的往來書信。'},
+ {t:'呈上當年焚稿未盡的諫書，以明心跡',e:{x:-4,f:-2},o:'陛下讀了幾頁，神色稍霽。'},
+ {t:'自請罷官歸田',ch:{p:S=>S.f/110,ok:{e:{x:-12,f:-4,h:6},o:'陛下准你致仕，仍保留爵祿。猜忌漸消。',set:{retired:1}},no:{e:{x:12,f:-6},o:'陛下冷笑：「欲以退為進邪？」'}}}]},
+{id:'liao',y:644,m:7,place:'洛陽宮',title:'東征高句麗',
+ text:`高句麗權臣淵蓋蘇文弒君，陛下決意親征遼東，已命張亮、李勣治兵。群臣苦諫不止，陛下說：「八表清夷，只此一隅未定。」`,
+ opts:[
+ {t:'以死力諫：隋煬帝三征遼東而亡國，前車之鑑',ch:{p:S=>(S.f+S.r)/220,ok:{e:{r:8,s:6,f:-4},o:'陛下撫你背說：「若卿不在，朕必行此。」親征作罷，改遣偏師襲擾。',set:{noWar:1}},no:{e:{f:-8,r:5},o:'陛下不聽，仍決意親征。',set:{war:1}}}},
+ {t:'請以偏師屢擾，疲敵而不親征',e:{s:3,r:2},o:'陛下仍要親征，但採納了你分兵的建議。',set:{war:1}},
+ {t:'支持親征，請隨駕參謀',e:{f:5,h:-10},o:'你以六十四歲之齡隨軍東行。',set:{war:1,march:1}},
+ {t:'年老多病，不復爭',e:{r:-3,h:3},o:'大軍東出。',set:{war:1}}]},
+{id:'anshi',y:645,m:9,cond:S=>S.flags.war,place:'遼東・安市城',title:'安市城下',
+ text:S=>`大軍連下十城，卻在安市城下頓兵三月。遼東早寒，草枯水凍，士馬難以久留。${S.flags.march?'你在營中咳嗽不止。':''}陛下問計。`,
+ opts:[
+ {t:'勸陛下即刻班師，保全士卒',e:{s:3,f:-1},o:'陛下下令班師。歸途中遇暴風雪，仍有不少士卒凍死。'},
+ {t:'建議繞過安市，直取平壤',ch:{p:()=>0.3,ok:{e:{s:8,f:6},o:'奇兵奏效，高句麗遣使請降。'},no:{e:{s:-10,h:-6},o:'大軍深入，糧道被截，死傷慘重。'}}},
+ {t:'請增兵強攻',e:{s:-6,f:2},o:'土山崩塌，攻城失利，仍是班師。'},
+ {t:'不發一言',e:{r:-2},o:'陛下班師後感嘆：「魏徵若在，不使我有是行也。」'}]},
+{id:'dan',y:648,m:6,cond:S=>S.emp==='太宗',place:'金液門',title:'胡僧丹藥',
+ text:`陛下自遼東歸來病體日衰，近來聽信天竺方士那羅邇娑婆寐，命其煉製長生丹藥，已服數月。`,
+ opts:[
+ {t:'直諫：秦皇漢武求仙皆無益，丹藥傷身',e:{r:5,f:-4},o:'陛下答應減量，但仍偷偷服用。'},
+ {t:'請太子李治侍疾，勸陛下以醫藥為主',e:{f:2},o:'太子日夜侍疾，陛下精神稍好。'},
+ {t:'暗中將丹藥送太醫署查驗',ch:{p:()=>0.5,ok:{e:{r:3,f:3},o:'查出丹中含大量丹砂，陛下這才停藥。'},no:{e:{x:6},o:'方士察覺，反誣你「謀害聖躬」。'}}},
+ {t:'人主之好，非臣下所能移',e:{},o:'陛下繼續服丹。'}]},
+{id:'beng',y:649,m:5,place:'翠微宮・含風殿',title:'太宗崩',
+ text:S=>`陛下崩於翠微宮含風殿，享年五十二。臨終前握著長孫無忌與褚遂良的手託孤。你跪在殿外，想起三十年前在東宮與他為敵，後來卻做了他二十多年的鏡子。新君${S.heir==='治'?'李治':S.heir==='承乾'?'承乾':'李泰'}即位。`,
+ opts:[
+ {t:'哭臨盡哀，請新君守喪三年以示孝道',e:{r:4,h:-4},o:'新君守喪，朝政由長孫無忌主持。'},
+ {t:'請新君以日易月，速理朝政',e:{s:3,f:2},o:'新君採納，朝局平穩過渡。'},
+ {t:'上表乞骸骨，歸鄉終老',e:{h:8,f:-6},o:'新君再三挽留，你只得留任閒職。',set:{retired:1}},
+ {t:'進言：先帝晚年勞民，新政宜休養生息',e:{r:5,s:4,f:-2},o:'新君下詔停遼東之役，罷土木工程。'}],
+ fn0:S=>{S.emp=S.heir==='治'?'高宗':S.heir==='承乾'?'新帝承乾':'新帝李泰';
+   const lean=S.heir==='治'?S.cnt.pz:S.heir==='承乾'?S.cnt.pc:S.cnt.pt;S.f=clamp(45+lean*4);
+   if(S.wu==='palace')S.wu='temple';}},
+{id:'ganye',y:651,m:5,cond:S=>S.heir==='治'&&S.wu==='temple',place:'感業寺',title:'感業寺重逢',
+ text:`先帝忌日，陛下到感業寺行香，與削髮為尼的武媚娘相對而泣。王皇后為了對付得寵的蕭淑妃，竟主動勸陛下接媚娘回宮。`,
+ opts:[
+ {t:'上疏力阻：先帝才人入侍新君，有乖人倫',e:{r:5,f:-6},o:'陛下不悅，媚娘仍被接回宮中。',set:{wuEnemy:1}},
+ {t:'默許此事',e:{f:2},o:'媚娘入宮。',fn:S=>{S.wu='palace'}},
+ {t:S=>S.flags.wuDebt?'私下傳話媚娘：當年之恩，望她勿忘本心':'私下觀察媚娘的動向',e:{x:3},o:S=>S.flags.wuDebt?'媚娘回話：「魏公在一日，媚娘不敢負大唐。」':'你發現她在寺中仍讀史書不輟。'},
+ {t:'勸王皇后：引虎驅狼，必受其害',e:{r:3},o:'王皇后不聽。'}],fn0:S=>{S.wu='palace'}},
+{id:'feili',y:655,m:9,cond:S=>S.heir==='治'&&S.wu==='palace',place:'太極殿',title:'廢王立武',
+ text:`陛下欲廢王皇后、立武昭儀為后。褚遂良當廷叩頭至流血，置笏於殿階；長孫無忌沉默不語；李勣說「此陛下家事，何必更問外人」。陛下最後望向你這位七十五歲的老臣。`,
+ opts:[
+ {t:'與褚遂良同進退，叩首力爭',e:{r:10,f:-25,x:10},o:'簾後傳來武昭儀的聲音：「何不撲殺此獠！」你和褚遂良一同被貶出京。',set:{exiled:1},fn:S=>{S.h-=10}},
+ {t:'效李勣：此陛下家事',e:{f:8,r:-10},o:'武媚娘被立為皇后。',fn:S=>{S.wu='empress'}},
+ {t:S=>S.flags.wuDebt?'以舊恩私見武昭儀，求她保全王皇后性命':'請陛下立后後善待王、蕭二人',ch:{p:S=>S.flags.wuDebt?0.6:0.2,ok:{e:{r:5},o:'武后答應了。王、蕭二人被幽禁而得保全性命。'},no:{e:{x:6},o:'不久傳來消息：王、蕭二人被杖百、斷手足，投入酒甕。'}},fn:S=>{S.wu='empress'}},
+ {t:'告病不朝',e:{h:3,r:-3},o:'武昭儀被立為皇后。',fn:S=>{S.wu='empress'}}]},
+{id:'wuji',y:659,m:4,cond:S=>S.heir==='治'&&S.wu==='empress',place:'黔州道',title:'長孫無忌之死',
+ text:`許敬宗誣告長孫無忌謀反，陛下不經審問便將舅父流放黔州，旋即逼其自縊。朝中顧命老臣已所剩無幾，你是其中之一。`,
+ opts:[
+ {t:'上書為長孫無忌鳴冤',e:{r:8,f:-15,x:15},o:'奏疏石沉大海。許敬宗開始羅織你的罪名。'},
+ {t:'閉門謝客，不問朝政',e:{h:4,x:-5},o:'你終日在府中修書。'},
+ {t:'密奏陛下：外戚已除，勿令皇后專政',e:{r:4,x:10},o:'陛下嘆道：「朕亦苦之。」但此話很快傳到了中宮。'},
+ {t:'請致仕歸鄉',e:{x:-8,f:-4,h:5},o:'陛下准奏。你回到了魏州故里。',set:{retired:1}}]},
+{id:'newcq',y:650,m:3,cond:S=>S.heir==='承乾',place:'太極殿',title:'承平元年',
+ text:`承乾即位，改元承平。他的腳疾仍在，脾氣也還急躁，但每逢大事都會召你入宮。他說：「當年若非魏公，朕已死於黔州。」`,
+ opts:[
+ {t:'請陛下親賢臣、遠佞幸，勿再重蹈東宮舊事',e:{r:5,f:2},o:'承乾點頭，罷黜了幾名舊日東宮的弄臣。',add:{reform:1}},
+ {t:'請赦免被幽禁的魏王李泰',e:{r:6,f:-3},o:'承乾猶豫再三，准李泰出就封國。手足之情，總算留了一絲。'},
+ {t:'請重用晉王李治',e:{s:3,f:-2},o:'李治出任并州都督，兄弟相安。'},
+ {t:'請陛下放出感業寺中先帝宮人',e:{r:2},o:'武媚娘等人得以還俗歸家。歷史上那位女皇，從此不知所終。',fn:S=>{S.wu='gone'}}]},
+{id:'newtai',y:650,m:3,cond:S=>S.heir==='泰',place:'太極殿',title:'文興元年',
+ text:`李泰即位，改元文興。他召集文士大修典籍，但當年「殺子傳弟」的承諾，朝中人人記得。晉王李治惶惶不可終日。`,
+ opts:[
+ {t:'請陛下兌現承諾，冊立晉王為皇太弟',e:{r:6,f:-8,x:5},o:'李泰臉色鐵青，沒有回答。'},
+ {t:'請陛下厚待晉王，以安人心',e:{r:3,f:1},o:'李治被封為司徒，保住了性命。'},
+ {t:'勸陛下立皇子為太子，絕晉王之望',e:{f:5,r:-8},o:'李治被貶出京，死於任上。'},
+ {t:'專心修史，不涉儲位',e:{h:3},o:'你主持修撰《五代史志》。'}]}
+];
+
+/* ============ 血蚊修羅（異聞線） ============ */
+const ASURA=[
+{id:'tianxiang',w:3,cd:999,cond:S=>S.y>=638&&!S.flags.asuraSeen&&!S.flags.asuraDone,place:'太史局・靈台',title:'血色客星',art:'asura0',
+ text:`李淳風夜訪，神色凝重：「近月有赤色客星犯紫微，其光如血。掖庭宮人接連病倒，頸上皆有針孔，血盡而亡。坊間傳說，有一物象鼻長吻、四目耳翼、千手持鐮，喚作『血蚊修羅』。」`,
+ opts:[
+ {t:'斥為妖言，此必有人借鬼神作亂',e:{r:3},o:'你奏請徹查掖庭飲食。李淳風搖頭離去。',set:{asuraSeen:1}},
+ {t:'隨李淳風夜巡掖庭',e:{h:-2},o:'你換上便服，帶著一面家傳的青銅鏡，跟著李淳風走入夜色。',set:{asuraSeen:1,patrol:1}},
+ {t:'奏請陛下設壇禳災',e:{f:2,s:-2},o:'道士做了七天法事，宮人仍在死去。',set:{asuraSeen:1}},
+ {t:'不信此事',e:{},o:'一個月後，你府中的老僕也倒下了，頸上兩個細小的針孔。',set:{asuraSeen:1},fn:S=>{S.h-=4}}]},
+{id:'yeying',w:6,cd:999,cond:S=>S.flags.patrol&&!S.flags.asuraMet,place:'掖庭・子夜',title:'血蚊修羅',art:'asura',
+ text:`宮牆陰影裡，一團灰粉蒼白的皮肉緩緩展開，身形如象，高過宮簷。四隻血紅的眼睛同時睜開，耳狀的肉翼張開來遮住半個月亮，滿身紅色傷疤。那細長的針喙在空中嗅了嗅，對準了你。`,
+ opts:[
+ {t:'舉起銅鏡：「以銅為鏡，可正衣冠；妖物安敢照之！」',ch:{p:S=>0.35+S.r/200,ok:{e:{r:6,h:-6},o:'鏡光映出它的真形，修羅發出刺耳尖嘯，全身猛然膨脹五倍，施出「肉翼重壓・骨盾絞殺」，卻被鏡光逼退，破開宮瓦遁入夜空。',set:{asuraMet:1,mirror:1}},no:{e:{h:-18},o:'修羅身軀暴漲五倍，「血池逆流・針刺鯨吞」，針喙破空而來，貫穿你的肩頭。李淳風以符火驚走了它。你被抬回府中。',set:{asuraMet:1}}}},
+ {t:'以浩然正氣厲聲叱之',ch:{p:S=>S.r/130,ok:{e:{r:5,h:-4},o:'它竟在你的叱聲中遲疑了。四隻眼睛盯了你許久，緩緩退入黑暗。',set:{asuraMet:1}},no:{e:{h:-14},o:'它充耳不聞。長吻一甩，你被掃倒在地。',set:{asuraMet:1}}}},
+ {t:'拔佩劍上前',e:{h:-20},o:'修羅全身暴漲五倍，「千手修羅・死角千切」，數十條手臂從四面八方襲來。你的劍斷了，胸口留下三道血痕。',set:{asuraMet:1}},
+ {t:'掩護宮人撤離',e:{r:4,h:-6},o:'你帶著十幾名宮女退到承天門，修羅沒有追來，只在牆頭盯著你。',set:{asuraMet:1}}]},
+{id:'mengzhan',w:4,cd:60,cond:S=>S.flags.asuraMet&&!S.flags.asuraDone&&S.emp==='太宗',place:'兩儀殿・午後',title:'夢斬修羅',art:'asura',
+ text:`陛下召你對弈。棋到中盤，你倦極伏案睡去。夢中天庭傳旨，命你監斬作亂的妖物，跪在刑台上的，正是那頭血蚊修羅。它用四隻眼睛哀求地看著你。陛下見你睡著，不忍叫醒，只替你搧扇。`,
+ opts:[
+ {t:'奉天旨，夢中揮劍斬之',e:{h:-10,r:6},o:'你一劍斬下。醒來時汗透重衣，陛下笑問何事。次日，宮城外落下一顆巨大的、長著象鼻長吻的頭顱。宮人從此不再無故死去。',set:{asuraDone:1,asuraSlain:1}},
+ {t:'問它為何噬人',e:{h:-4},o:'它說它本是掖庭積怨所化，宮中冤死者越多，它便越強大。說完它掙脫鎖鏈逃走了。',set:{asuraWhy:1}},
+ {t:'放它一條生路',e:{r:-2},o:'它向你低頭三次，消失在雲中。從此宮中怪事少了，但你偶爾在夜裡聽見翅膀拍動的聲音。',set:{asuraDone:1,asuraFreed:1}},
+ {t:'強迫自己醒來',e:{h:-2},o:'你驚醒，棋盤上的黑子已被陛下吃掉大半。'}]},
+{id:'fuzhi',w:2,cd:40,cond:S=>S.flags.asuraMet&&!S.flags.asuraDone,place:'魏府・深夜',title:'修羅夜至',art:'asura',
+ text:S=>`窗紙上映出一雙巨大的耳翼。${S.flags.asuraWhy?'你想起它說的話：宮中冤死的人越多，它就越強。':'它找上門來了。'}`,
+ opts:[
+ {t:'舉鏡迎之',ch:{p:S=>S.flags.mirror?0.7:0.4,ok:{e:{h:-3},o:'鏡光一閃，它退走了。'},no:{e:{h:-15},o:'針喙刺穿窗櫺，你失血昏迷。'}}},
+ {t:'奏請為歷年掖庭冤死者昭雪',e:{r:6,f:-2},o:S=>S.flags.asuraWhy?'冤案昭雪之後，翅膀聲越來越遠，最後再也沒有出現。':'陛下准奏。修羅似乎弱了一些。',fn:S=>{if(S.flags.asuraWhy)S.flags.asuraDone=1}},
+ {t:'與家人避入密室',e:{h:-5},o:'一夜無事，天亮時院中老槐被吸成了枯木。'},
+ {t:'焚香閉目，默誦《道德經》',e:{h:-8},o:'你想起年輕時當道士的日子。它在窗外徘徊到天明。'}]}
+];
+
+/* ============ 隨機日常事件（模板，每次參數不同） ============ */
+const SUR=['王','李','張','劉','陳','楊','趙','孫','鄭','崔','盧','蕭','韋','裴'];
+const TIT=['刺史','縣令','將軍','員外郎','御史','都督','司馬'];
+const ZHOU=['相州','魏州','洛州','并州','益州','揚州','幽州','荊州','汴州','涼州','秦州','越州','齊州','蒲州'];
+const ZAI=['大旱','蝗災','河水泛溢','霜雹傷稼','疫癘流行','地震'];
+const ZUI=['貪贓枉法','擅殺無辜','結交權貴','虛報戶口','私鑄錢幣','言語謗訕朝廷'];
+const WEN=['守成與創業孰難','人君何為而明，何為而暗','隋何以亡','如何選用州縣官','如何使百姓富足','法令寬嚴之道','天子如何納諫'];
+const POOL=[
+{id:'zai',w:5,cd:6,gen:S=>{const z=pick(ZHOU),d=pick(ZAI);return{place:z,title:`${z}${d}`,
+ text:`${z}八百里加急奏報：境內${d}，百姓流離，已有人賣兒鬻女。戶部說太倉存糧尚可，但${emp()}正為邊事籌糧。`,
+ opts:[
+ {t:'請開倉賑濟，先救人命',e:{s:4,f:-1,r:2},o:`${z}的災民得以存活，有人在路邊為你立了生祠。`},
+ {t:'請減免當地租調三年',e:{s:3,r:2},o:'戶部尚書抱怨收入減少，但流民逐漸返鄉。'},
+ {t:'自請赴災區巡察',e:{s:5,r:4,h:-8},o:'你在泥濘中走了一個月，查出刺史隱匿災情。'},
+ {t:'先查地方吏治，再議賑濟',e:{r:1,s:-2},o:'查證拖延了兩個月，災民死了不少。'}]}}},
+{id:'tanhe',w:5,cd:5,gen:S=>{const g=pick(SUR)+pick(TIT),z=pick(ZUI);return{place:'御史台',title:`彈劾${g}`,
+ text:`御史上章彈劾${g}${z}。此人是你舊日同僚的門生，托人來求你說句話。`,
+ opts:[
+ {t:'依律嚴辦，不徇私情',e:{r:4,x:-1},o:`${g}被罷官。同僚與你絕交。`},
+ {t:'奏請詳查實據，勿以風聞定罪',e:{r:3,s:1},o:'查實部分罪名，從輕發落。'},
+ {t:'替他求情',e:{f:-2,x:5,r:-3},o:'他保住了官位，送來的謝禮被你退了回去，但風聲已經傳開。'},
+ {t:'避嫌，不發一言',e:{},o:'此事依律處理。'}]}}},
+{id:'wen',w:6,cd:4,gen:S=>{const q=pick(WEN);return{place:'兩儀殿',title:'召對',
+ text:`${emp()}召你入對，問：「${q}？」左右侍臣都屏息看你。`,
+ opts:[
+ {t:'直言其弊，指陳當今之失',e:{r:5,f:-3},o:`${emp()}面色微變，最後還是說「卿言是也」。`},
+ {t:'引古諷喻，借隋事說今事',e:{r:3,f:2},o:'君臣相談至日暮。'},
+ {t:'順旨稱善，頌揚聖德',e:{f:4,r:-5},o:'龍顏大悅，史官記下了你的話。'},
+ {t:'上陳具體條目，請付有司施行',e:{s:4,h:-3},o:'你連夜寫了萬言條陳。'}]}}},
+{id:'hunt',w:3,cd:12,cond:S=>S.emp!=='新帝李泰',gen:S=>({place:'禁苑',title:'出獵',
+ text:`${emp()}興致正高，欲出京往洛陽苑大獵，車駕已備。正值農忙時節，沿途州縣要徵發民夫修路。`,
+ opts:[
+ {t:'攔駕力諫，農時不可奪',e:{r:5,f:-4,s:2},o:'車駕回宮。據說回宮路上還說了句「畏魏徵」。'},
+ {t:'請改期至秋收之後',e:{r:2,s:1},o:'出獵延到秋後。'},
+ {t:'隨駕同行',e:{f:3,h:-4},o:'你騎馬跟了三天，腰痛不已。'},
+ {t:'不爭',e:{r:-2},o:'車駕出京。'}]})},
+{id:'home',w:6,cd:5,gen:S=>({place:'魏府',title:'家中',
+ text:`夫人裴氏端來湯藥，說你近來咳嗽越發厲害，夜裡常常驚醒。長子叔玉想陪你去終南山走走。`,
+ opts:[
+ {t:'告假數日，與家人遊終南山',e:{h:8,f:-1},o:'山中清涼，你睡了幾個好覺。'},
+ {t:'喝完藥，繼續批閱公文',e:{h:-3,s:2},o:'燈一直亮到四更。'},
+ {t:'教叔玉讀《隋書》，講前朝興亡',e:{h:2,r:1},o:'叔玉問：隋朝那麼強，為什麼會亡？你講了一整夜。'},
+ {t:'延請太醫診治',e:{h:5},o:'太醫開了新方子，咳嗽稍止。'}]})},
+{id:'bribe',w:3,cd:15,gen:S=>{const g=pick(SUR)+pick(TIT);return{place:'魏府門前',title:'夜半訪客',
+ text:`${g}深夜來訪，帶來一箱金餅，說只求你在吏部銓選時美言一句。`,
+ opts:[
+ {t:'閉門不納',e:{r:3},o:'他在門外站了一個時辰才走。'},
+ {t:'收下後原封呈交御史台',e:{r:5,f:2,x:-2},o:`${g}被查辦，朝中風氣一肅。`},
+ {t:'收下',e:{x:12,r:-10},o:'第二天整個長安都知道了。'},
+ {t:'溫言勸退，曉以利害',e:{r:2},o:'他慚愧而去。'}]}}},
+{id:'wubook',w:3,cd:20,cond:S=>S.emp==='太宗'&&S.wu==='palace',gen:S=>({place:'弘文館',title:'媚娘借書',
+ text:`武媚娘托人來弘文館，說想借你批註過的《漢書》與《隋書》。她說在宮中讀史，才知人心。`,
+ opts:[
+ {t:'借給她，並附上一封信講史家之德',e:{r:1},o:'她回信說：「讀魏公批註，方知史家之筆可畏。」',set:{wuAlly:1}},
+ {t:'婉拒：宮人讀史，非其所宜',e:{},o:'她沒有再來。'},
+ {t:'借她《列女傳》',e:{f:1},o:'書被原封退回。',set:{wuEnemy:1}},
+ {t:'報告陛下',e:{f:2},o:'陛下笑道：「此女好學。」'}]})},
+{id:'colleague',w:4,cd:8,gen:S=>{const p=pick(['房玄齡','長孫無忌','褚遂良','李勣','岑文本','馬周']);return{place:'中書省',title:`與${p}議事`,
+ text:`${p}與你在一件政事上意見相左，雙方在政事堂爭得面紅耳赤。眾人等著你表態。`,
+ opts:[
+ {t:'堅持己見，據理力爭',e:{r:3,x:2},o:`${p}拂袖而去。`},
+ {t:'各退一步，擬一折衷之策',e:{s:3},o:'兩人聯名上奏，獲准施行。'},
+ {t:`退讓，從${p}之議`,e:{x:-2,r:-1},o:'事情很快辦妥。'},
+ {t:'請付廷議公決',e:{r:1,s:1},o:'廷議採納了你的方案。'}]}}},
+{id:'festival',w:2,cd:30,gen:S=>({place:'長安城',title:season(S.m)==='春'?'上元燈會':season(S.m)==='秋'?'重陽登高':'節令',
+ text:`節令將至，長安城中張燈結綵。${emp()}賜百官宴，教坊奏樂。`,
+ opts:[
+ {t:'赴宴，與同僚盡歡',e:{f:2,h:2},o:'難得的輕鬆夜晚。'},
+ {t:'赴宴，席間諫言節用',e:{r:3,f:-2},o:'滿座為之掃興。'},
+ {t:'在家陪伴家人',e:{h:4},o:'叔玉和弟弟們陪你在院中賞月。'},
+ {t:'乘夜微服，查看坊市民情',e:{s:2,h:-2},o:'你看到東市米價又漲了。'}]})},
+{id:'history',w:3,cd:15,gen:S=>({place:'秘書省',title:'修史',
+ text:`秘書省修撰《五代史志》，史官對隋末群雄的評價爭論不休。有人主張貶抑李密、竇建德，你曾是他們的部下。`,
+ opts:[
+ {t:'秉筆直書，功過並陳',e:{r:5},o:'史官們服膺你的公正。'},
+ {t:'為舊主略作回護',e:{r:-3,x:4},o:'有人議論你念舊主之情。'},
+ {t:'自請迴避',e:{r:2},o:'你推掉了這部分的審定。'},
+ {t:'趁機寫一篇《隋亡論》呈上',e:{r:3,f:2,h:-3},o:'這篇文章在朝中傳抄一時。'}]})}
+];
+
+/* ============ 引擎 ============ */
+function dateStr(){const[e,n]=era(S.y);return `${e}${cn(n)}年 ${MON[S.m-1]}月 第${cn(S.w)}週`}
+function addLog(s){S.log.unshift(`${dateStr()}｜${s}`);if(S.log.length>200)S.log.pop()}
+function resolve(v){return typeof v==='function'?v(S):v}
+
+function applyFx(e){const d={};if(!e)return d;
+  for(const[k]of STAT){if(e[k]){S[k]=clamp(S[k]+e[k]);d[k]=(d[k]||0)+e[k]}}return d}
+function merge(a,b){for(const k in b)a[k]=(a[k]||0)+b[k];return a}
+
+function choose(i){
+  if(phase!=='event')return;
+  const ev=cur, op=ev.opts[i]; let res={e:op.e,o:op.o,set:op.set};
+  if(op.ch){res=Math.random()<op.ch.p(S)?op.ch.ok:op.ch.no}
+  if(op.fn){const r=op.fn(S);if(r)res=Object.assign({},res,r)}
+  if(op.add)for(const k in op.add)S.cnt[k]+=op.add[k];
+  if(res.add)for(const k in res.add)S.cnt[k]+=res.add[k];
+  const h0=S.h; const d=applyFx(res.e);
+  if(h0!==S.h&&!d.h){}
+  if(res.set)Object.assign(S.flags,res.set);
+  if(ev.fn0)ev.fn0(S);
+  if(ev.id)S.done[ev.id]=1;
+  lastDelta=d;
+  const otext=resolve(res.o)||'';
+  addLog(`${ev.title}：${resolve(op.t)}`);
+  phase='result'; cur.result={t:resolve(op.t),o:otext,d,death:op.death};
+  if(op.death){die(op.death);return}
+  save(); render();
+}
+
+function nextTurn(){
+  // 每週自然消耗：年歲越高，體力流失越快
+  const decay=0.03+Math.max(0,S.age-60)*0.035+Math.max(0,S.age-68)*0.09+(S.flags.retired?-0.05:0);
+  S.h=clamp(S.h-decay);
+  if(S.x>0&&Math.random()<0.25)S.x=clamp(S.x-1);
+  S.turn++; S.w++;
+  if(S.w>4){S.w=1;S.m++;if(S.m>12){S.m=1;S.y++;S.age++}}
+  if(checkDeath())return;
+  cur=pickEvent(); phase='event'; lastDelta={}; save(); render();
+}
+
+function checkDeath(){
+  if(S.h<=0){die(S.age>=63?'壽終':'病逝');return true}
+  if(S.x>=100){die('下獄');return true}
+  if(S.f<=0){die(S.r>=60?'貶死':'賜死');return true}
+  if(S.s<=0){die('兵燹');return true}
+  return false;
+}
+
+function pickEvent(){
+  for(const ev of SCRIPT){
+    if(S.done[ev.id])continue;
+    if(S.y>ev.y||(S.y===ev.y&&S.m>=ev.m)){
+      if(!ev.cond||ev.cond(S)){return materialize(ev)}
+      if(S.y>ev.y+1)S.done[ev.id]=1;
+    }
+  }
+  const pool=[];
+  for(const a of ASURA){if((S.cool[a.id]||0)<=S.turn&&a.cond(S))pool.push([a,a.w])}
+  for(const p of POOL){if((S.cool[p.id]||0)<=S.turn&&(!p.cond||p.cond(S)))pool.push([p,p.w])}
+  if(!pool.length){const p=POOL.find(x=>x.id==='wen');pool.push([p,1])}
+  let tot=pool.reduce((s,x)=>s+x[1],0),r=Math.random()*tot,ch=pool[0][0];
+  for(const[p,w]of pool){r-=w;if(r<=0){ch=p;break}}
+  S.cool[ch.id]=S.turn+ch.cd;
+  const ev=ch.gen?Object.assign({},ch.gen(S),{pid:ch.id}):Object.assign({},ch,{pid:ch.id});
+  if(ch.gen)ev.id=null;
+  if(ASURA.includes(ch))S.done[ch.id]=0;
+  return materialize(ev);
+}
+function materialize(ev){return Object.assign({},ev,{text:resolve(ev.text),title:resolve(ev.title)})}
+
+const DEATH={
+ '病逝':['病逝於府中','風疾終於奪走了你。陛下親臨弔唁，罷朝五日。'],
+ '壽終':['壽終正寢','你在睡夢中離世，夫人說你走時神色安詳。'],
+ '下獄':['以結黨之罪下獄，死於獄中','猜忌積累到了頂點。御史台的人在一個雨夜敲開了你的家門。'],
+ '貶死':['貶官嶺南，卒於途中','你觸怒天顏，被貶為嶺南小吏。行至韶州，染瘴而亡。'],
+ '賜死':['賜死','一杯鴆酒擺在你的面前。中使說：「魏公，請。」'],
+ '兵燹':['死於亂兵之中','天下大亂，亂兵攻入長安，你在府門前被殺。']
+};
+
+function die(cause){
+  S.alive=false; S.death=cause; phase='end';
+  addLog(`魏徵${DEATH[cause][0]}，享年${S.age}。`);
+  save(); render();
+}
+
+function epilogue(){
+  const out=[];
+  const posthum=S.r>=80?'文貞':S.r>=60?'文':S.r>=40?'貞':null;
+  if(S.death==='賜死'||S.death==='下獄')out.push('死後被削去官爵，家產籍沒。');
+  else out.push(`朝廷追贈司空、相州都督${posthum?`，諡曰「${posthum}」`:'，未議諡號'}。`);
+  if(S.emp==='太宗'&&S.f>=40&&S.death!=='賜死'&&S.death!=='下獄')
+    out.push('陛下對侍臣嘆道：「以銅為鏡，可以正衣冠；以古為鏡，可以知興替；以人為鏡，可以明得失。今魏徵殂逝，遂亡一鏡矣。」');
+  const bad=(S.flags.recHou?1:0)+(S.flags.copies?1:0);
+  if(S.emp==='太宗'&&bad&&S.y<=644){
+    out.push(`半年之後，${S.flags.recHou?'你曾密薦的侯君集謀反伏誅':''}${S.flags.recHou&&S.flags.copies?'，又':''}${S.flags.copies?'有人揭發你將諫書副本出示史官':''}。陛下大怒，推倒了親手所撰的墓碑${S.flags.hengshan?'，並取消了衡山公主與叔玉的婚約':''}。`);
+    out.push('次年東征高句麗失利，陛下嘆曰「魏徵若在，不使我有是行也」，命人重立墓碑，慰問你的家人。');
+  }else if(S.emp==='太宗'&&S.flags.hengshan&&!bad)out.push('衡山公主如期下嫁叔玉，魏家世受恩寵。');
+  if(S.flags.asuraSlain)out.push('民間傳說：魏徵曾於夢中斬殺血蚊修羅，宮門從此貼你的畫像以辟邪。');
+  else if(S.flags.asuraMet&&!S.flags.asuraDone)out.push('你死後，掖庭的夜裡又響起了翅膀拍動的聲音。');
+  if(S.heir==='承乾')out.push('承乾在位期間，大唐沒有出現女皇。人們說，那是因為當年東宮有魏公。');
+  else if(S.heir==='泰')out.push('李泰即位後，晉王李治的命運成了史家爭論不休的謎。');
+  else if(S.wu==='empress')out.push('武后日後臨朝稱制，改唐為周。史官寫到你時，筆鋒總帶著幾分惋惜。');
+  else if(S.heir==='治'&&S.y<655)out.push(S.flags.wuDebt?'多年後，已是天后的武媚娘在史館看到你的名字，命人為你的祠堂添了香火。':'你沒能看到感業寺那位女子日後掀起的風浪。');
+  return out;
+}
+
+/* ============ 存檔 ============ */
+function save(){try{localStorage.setItem(KEY,JSON.stringify({S,cur,phase}))}catch(e){}}
+function load(){try{const v=JSON.parse(localStorage.getItem(KEY));if(v&&v.S){S=v.S;phase=v.phase;cur=v.cur;
+  if(cur&&cur.id){const src=SCRIPT.find(e=>e.id===cur.id)||ASURA.find(e=>e.id===cur.id);if(src)cur=Object.assign(materialize(src),{result:cur.result,text:cur.text})}
+  else if(cur&&cur.pid){/* 模板事件：選項含函式，重新生成 */const src=POOL.find(p=>p.id===cur.pid);if(src&&phase==='event')cur=Object.assign(src.gen(S),{pid:cur.pid,id:null})}
+  return true}}catch(e){}return false}
+
+/* ============ 繪圖：血蚊修羅（2D 版） ============ */
+let raf=0;
+function drawAsura(cv,calm){
+  const ctx=cv.getContext('2d'),W=cv.width=cv.clientWidth*2,H=cv.height=cv.clientWidth*1.25;
+  cancelAnimationFrame(raf);
+  const skin='#d8b9b4',skinD='#a98580',scar='#b3202a',eye='#ff2b2b';
+  function frame(t){
+    t/=1000; ctx.clearRect(0,0,W,H);
+    const g=ctx.createRadialGradient(W*.5,H*.3,10,W*.5,H*.5,W*.7);g.addColorStop(0,'#3a0f17');g.addColorStop(1,'#0c0507');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    ctx.fillStyle='#c33';ctx.globalAlpha=.8;ctx.beginPath();ctx.arc(W*.82,H*.18,W*.05,0,7);ctx.fill();ctx.globalAlpha=1;
+    const cx=W*.5,cy=H*.52,s=W/1050*(calm?0.8:1)*(1+Math.sin(t*1.3)*.02);
+    ctx.save();ctx.translate(cx,cy);ctx.scale(s,s);
+    const flap=Math.sin(t*3)*.25;
+    // 耳狀肉翼
+    for(const sd of[-1,1]){ctx.save();ctx.scale(sd,1);ctx.rotate(-flap*.6);
+      ctx.beginPath();ctx.moveTo(40,-120);ctx.bezierCurveTo(260,-300,420,-120,380,60);ctx.bezierCurveTo(300,0,220,40,150,-20);ctx.closePath();
+      ctx.fillStyle='rgba(200,150,150,.78)';ctx.fill();ctx.strokeStyle=skinD;ctx.lineWidth=4;ctx.stroke();
+      ctx.strokeStyle='rgba(150,30,40,.6)';ctx.lineWidth=2;for(let i=0;i<5;i++){ctx.beginPath();ctx.moveTo(60,-110);ctx.quadraticCurveTo(200,-200+i*30,360-i*30,-60+i*25);ctx.stroke()}
+      ctx.restore()}
+    // 多臂與血鐮
+    for(let i=0;i<6;i++){const sd=i%2?1:-1,k=Math.floor(i/2);ctx.save();ctx.translate(sd*90,-10+k*45);
+      ctx.rotate(sd*(0.5+k*.35)+Math.sin(t*2+i)*.15);ctx.strokeStyle=skinD;ctx.lineWidth=16;ctx.lineCap='round';
+      ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(sd*120,60);ctx.lineTo(sd*190,20);ctx.stroke();
+      if(k===0){ctx.translate(sd*190,20);ctx.strokeStyle='#5a1218';ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(0,-110);ctx.stroke();
+        ctx.fillStyle='#c0141e';ctx.beginPath();ctx.moveTo(0,-110);ctx.quadraticCurveTo(sd*110,-150,sd*120,-60);ctx.quadraticCurveTo(sd*60,-110,0,-90);ctx.fill()}
+      ctx.restore()}
+    // 象形軀幹
+    ctx.fillStyle=skin;ctx.beginPath();ctx.ellipse(0,40,150,130,0,0,7);ctx.fill();
+    ctx.fillStyle=skinD;for(const sd of[-1,1]){ctx.beginPath();ctx.roundRect(sd*95-28,120,56,110,18);ctx.fill()}
+    // 頭
+    ctx.fillStyle=skin;ctx.beginPath();ctx.ellipse(0,-110,95,80,0,0,7);ctx.fill();
+    // 傷疤
+    ctx.strokeStyle=scar;ctx.lineWidth=5;ctx.lineCap='round';
+    [[-80,10,-30,60],[40,-20,100,30],[-20,90,30,130],[-60,-150,-20,-120],[30,-160,70,-140]].forEach(([a,b,c,d])=>{ctx.beginPath();ctx.moveTo(a,b);ctx.lineTo(c,d);ctx.stroke()});
+    // 四眼
+    const blink=(Math.sin(t*.7)>.97)?.2:1;
+    [[-48,-130],[48,-130],[-30,-100],[30,-100]].forEach(([x,y],i)=>{ctx.fillStyle='#200';ctx.beginPath();ctx.ellipse(x,y,i<2?16:11,(i<2?12:8)*blink,0,0,7);ctx.fill();
+      ctx.fillStyle=eye;ctx.shadowColor=eye;ctx.shadowBlur=20;ctx.beginPath();ctx.ellipse(x,y,i<2?8:5,(i<2?6:4)*blink,0,0,7);ctx.fill();ctx.shadowBlur=0});
+    // 象鼻長吻＋針喙
+    const sw=Math.sin(t*1.7)*30;ctx.strokeStyle=skin;ctx.lineWidth=34;ctx.lineCap='round';
+    ctx.beginPath();ctx.moveTo(0,-70);ctx.bezierCurveTo(sw,20,-sw*1.5,90,sw*.6+20,170);ctx.stroke();
+    ctx.strokeStyle=skinD;ctx.lineWidth=3;for(let i=0;i<7;i++){const yy=-40+i*30;ctx.beginPath();ctx.moveTo(-14+sw*(i/7)*.3,yy);ctx.lineTo(14+sw*(i/7)*.3,yy);ctx.stroke()}
+    ctx.strokeStyle='#3b0a0e';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(sw*.6+20,170);ctx.lineTo(sw*.9+30,300);ctx.stroke();
+    ctx.fillStyle='#e01b24';ctx.beginPath();ctx.arc(sw*.9+30,302,4+Math.abs(Math.sin(t*4))*3,0,7);ctx.fill();
+    ctx.restore();
+    if(!matchMedia('(prefers-reduced-motion: reduce)').matches)raf=requestAnimationFrame(frame);
+  }
+  raf=requestAnimationFrame(frame);
+}
+
+/* ============ 畫面 ============ */
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function renderStats(){
+  $('stats').innerHTML=STAT.map(([k,n])=>{const v=Math.round(S[k]),warn=k==='x'?v>=70:v<=25,d=lastDelta[k];
+    return `<div class="st ${warn?'warn':''}"><b>${n}</b><i>${v}${d?` <span class="d ${(k==='x'?-d:d)>0?'p':'n'}">${d>0?'+':''}${d}</span>`:''}</i><div class="bar"><div style="width:${v}%"></div></div></div>`}).join('');
+  const[e,n]=era(S.y);
+  $('date').innerHTML=`${e}${cn(n)}年　${MON[S.m-1]}月<span>第${cn(S.w)}週・${season(S.m)}・魏徵${S.age}歲・今上：${S.emp}</span>`;
+}
+function render(){
+  cancelAnimationFrame(raf);
+  if(!S)return;
+  renderStats();
+  $('log').innerHTML=S.log.map(l=>`<div>${esc(l)}</div>`).join('')||'<div>尚無紀錄。</div>';
+  const m=$('main');
+  if(phase==='intro'){
+    m.innerHTML=`<div class="card intro"><div class="place">貞觀十一年・長安</div><h2>你是魏徵</h2>
+    <div class="txt"><p>五十七歲，諫議大夫出身，現任侍中、鄭國公。你曾是隱太子李建成的屬官，勸他早除秦王；秦王即位後卻不殺你，反而讓你做了十年的「鏡子」。</p>
+    <p>這一年，十四歲的武如意剛剛入宮。太子承乾與魏王李泰的明爭暗鬥即將開始。每一週，你都要在四個選擇之中做出決斷。</p>
+    <p>五項屬性：<b>聖眷</b>歸零觸怒天顏；<b>清名</b>決定身後評價；<b>體力</b>隨年歲流失；<b>國勢</b>歸零天下大亂；<b>猜忌</b>滿百下獄。直到你死去，遊戲才會結束。</p></div>
+    <button class="btn" id="go">入朝</button></div>`;
+    $('go').onclick=()=>{cur=pickEvent();phase='event';save();render()};return;
+  }
+  if(phase==='end'){
+    const[t,txt]=DEATH[S.death];const yrs=S.y-637;
+    m.innerHTML=`<div class="card end"><div class="place">${dateStr()}</div><h2>魏徵${t}</h2>
+    <div class="txt"><p>${txt}</p>${epilogue().map(p=>`<p>${esc(p)}</p>`).join('')}</div>
+    <div class="epi">${S.r>=70?'以人為鏡　可明得失':S.r>=45?'直道而行　毀譽參半':'人鏡蒙塵'}</div>
+    <table class="tbl"><tr><td>享年</td><td>${S.age} 歲</td><td>遊戲歷時</td><td>${yrs} 年 ${S.turn} 週</td></tr>
+    <tr><td>清名</td><td>${Math.round(S.r)}</td><td>聖眷</td><td>${Math.round(S.f)}</td></tr>
+    <tr><td>國勢</td><td>${Math.round(S.s)}</td><td>猜忌</td><td>${Math.round(S.x)}</td></tr>
+    <tr><td>儲君</td><td>${S.heir?({治:'晉王李治',承乾:'太子承乾',泰:'魏王李泰'})[S.heir]:'未定'}</td><td>血蚊修羅</td><td>${S.flags.asuraSlain?'夢中斬殺':S.flags.asuraFreed?'放生':S.flags.asuraMet?'未除':'未遇'}</td></tr></table>
+    <button class="btn" id="again">再入貞觀</button></div>`;
+    $('again').onclick=restart;return;
+  }
+  const ev=cur;
+  const art=ev.art?`<canvas id="cv" aria-label="血蚊修羅"></canvas>`:'';
+  let body=`<div class="place">${esc(ev.place||'')}</div><h2>${esc(ev.title)}</h2>${art}<div class="txt"><p>${esc(ev.text)}</p></div>`;
+  if(phase==='event'){
+    body+=`<div class="opts">${ev.opts.map((o,i)=>`<button class="opt" id="opt${i}" data-i="${i}"><b class="seal">${SEAL[i]}</b><span>${esc(resolve(o.t))}</span></button>`).join('')}</div>`;
+  }else{
+    const r=ev.result,fx=Object.entries(r.d||{}).map(([k,v])=>`${STAT.find(s=>s[0]===k)[1]} ${v>0?'+':''}${v}`).join('　');
+    body+=`<div class="res"><div><b>你選擇：</b>${esc(r.t)}</div><p>${esc(r.o)}</p>${fx?`<div class="fx">${fx}</div>`:''}</div><button class="btn" id="next">下一週</button>`;
+  }
+  m.innerHTML=`<div class="card">${body}</div>`;
+  if(ev.art)drawAsura($('cv'),ev.art==='asura0');
+  if(phase==='event')m.querySelectorAll('.opt').forEach(b=>b.onclick=()=>choose(+b.dataset.i));
+  else $('next').onclick=nextTurn;
+}
+function restart(){S=newGame();phase='intro';cur=null;lastDelta={};save();render();window.scrollTo(0,0)}
+$('restart').onclick=()=>{if(phase==='end'||$('restart').dataset.c){delete $('restart').dataset.c;$('restart').textContent='重新開局';restart()}else{$('restart').dataset.c=1;$('restart').textContent='再按一次確認重來'}};
+
+function start(){if(!load()){S=newGame();phase='intro'}render()}
+window.claude?.hot?.snapshot?.(()=>({}));
+start();
+</script>
+
+</body></html>
